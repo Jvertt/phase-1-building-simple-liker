@@ -3,7 +3,24 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-
+const likes = document.querySelectorAll(".like-glyph")
+function likeCallback(e){
+  const heart = e.target
+mimicServerCall()
+.then(function(serverMessage){
+alert("you notified the server!")
+alert(serverMessage);
+heart.innerText = FULL_HEART
+heart.style.color = FULL_HEART
+})
+.catch(function(error){
+  alert("something went wrong!")
+  
+})
+}
+for (const glyph of likes){
+ likes.forEach(like => like.addEventListener("click", likeCallback))
+}
 
 
 
